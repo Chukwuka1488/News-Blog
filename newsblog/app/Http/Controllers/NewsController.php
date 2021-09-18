@@ -3,20 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Models\blogPost;
+// use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
     //
-    public function hello()
+    public function blogPost()
     {
-        return "Hello World!";
+
+        $blog = blogPost::all();
+        // $blog = DB::table('blogs')->get();
+        // $blog = DB::select('select * from blogs');
+        return view('front.home', compact('blog'));
     }
 
     public function home()
     {
         $first_name = 'Haykay';
         $last_name = 'Qazi';
-        return view('home', compact('first_name', 'last_name'));
+        return view('front.layout.master', compact('first_name', 'last_name'));
     }
 }
