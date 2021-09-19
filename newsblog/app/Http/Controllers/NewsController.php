@@ -12,9 +12,7 @@ class NewsController extends Controller
     public function blogPost()
     {
 
-        $blog = blogPost::all();
-        // $blog = DB::table('blogs')->get();
-        // $blog = DB::select('select * from blogs');
+        $blog = blogPost::latest()->get();
         return view('front.home', compact('blog'));
     }
 
